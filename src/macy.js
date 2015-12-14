@@ -446,13 +446,9 @@
    * Removes Macy instance.
    */
   var remove = function () {
-    each(cache.container.children, function (index, ele) {
-      ele.removeAttribute('style');
-    });
-
-    cache.container.removeAttribute('style');
-
-    window.removeEventListener('resize',  recalculate);
+    if(cache.container) {
+      window.removeEventListener('resize',  recalculate);
+    }
   };
 
  /**
