@@ -80,12 +80,22 @@
 
   var imgsRequired, currentlyLoaded;
 
+  // https://andylangton.co.uk/blog/development/get-viewportwindow-size-width-and-height-javascript
+  var viewport = function() {
+      var e = window, a = 'inner';
+      if (!('innerWidth' in window )) {
+          a = 'client';
+          e = document.documentElement || document.body;
+      }
+      return { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
+  };
+
   /**
    * Works out how many columns should be used at the current width.
    * @return {Number} - The number of colummns
    */
   var getCurrentColumns = function () {
-    var docWidth = document.body.clientWidth;
+    var docWidth = viewport().width;
     var noOfColumns;
 
     for (var widths in cache.options.breakAt) {
