@@ -342,6 +342,10 @@
    * Recalculates element positions.
    */
   var recalculate = function () {
+    // don't recalculate if no container
+    if(!cache.container)
+      return;
+
     var columns = getCurrentColumns();
 
     if (columns === 1) {
